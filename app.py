@@ -21,7 +21,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-pio.templates.default = "midnight_bloom"
+import plotly.io as pio
+import plotly.graph_objects as go
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
