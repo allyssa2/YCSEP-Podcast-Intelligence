@@ -21,103 +21,70 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-# ==========================================
-# MIDNIGHT BLOOM - GLOBAL CHART THEME
-# ==========================================
-
-COLORS = {
-    "navy": "#192B59",
-    "blue": "#5274B8",
-    "red": "#D93650",
-    "pink": "#E879A5",
-    "blush": "#F2A0BB",
-    "background": "#F7F8FC",
-    "white": "#FFFFFF",
-    "text": "#293348",
-    "border": "#E5E8F0",
-    "muted": "#AAB3C5"
-}
-
-CLUSTER_COLORS = {
-    0: COLORS["navy"],
-    1: COLORS["red"],
-    2: COLORS["pink"]
-}
-
-CHANNEL_COLORS = [
-    COLORS["navy"],
-    COLORS["blue"],
-    COLORS["pink"]
-]
-
-# Global Plotly template
-import plotly.io as pio
-
-pio.templates["midnight_bloom"] = {
-    "layout": {
-        "paper_bgcolor": COLORS["background"],
-        "plot_bgcolor": COLORS["white"],
-        "font": {
-            "color": COLORS["text"],
-            "family": "Inter, sans-serif"
-        },
-        "title": {
-            "font": {"color": COLORS["navy"]}
-        },
-        "xaxis": {
-            "gridcolor": COLORS["border"],
-            "linecolor": COLORS["border"],
-            "zerolinecolor": COLORS["border"]
-        },
-        "yaxis": {
-            "gridcolor": COLORS["border"],
-            "linecolor": COLORS["border"],
-            "zerolinecolor": COLORS["border"]
-        },
-        "colorway": [
-            COLORS["navy"],
-            COLORS["red"],
-            COLORS["pink"],
-            COLORS["blue"],
-            COLORS["blush"]
-        ],
-        "legend": {
-            "bgcolor": "rgba(255,255,255,0)"
-        },
-        "margin": {
-            "t": 55,
-            "b": 40,
-            "l": 40,
-            "r": 25
-        }
-    }
-}
-
 pio.templates.default = "midnight_bloom"
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
-PRIMARY = "#233A67"
-ACCENT = "#6579ED"
-TEAL = "#16A994"
-ORANGE = "#F1A64A"
-INK = "#17243C"
-MUTED = "#718098"
+
+# ==========================================
+# MIDNIGHT BLOOM COLOR PALETTE
+# ==========================================
+
+PRIMARY = "#192B59"       # Midnight Blue
+ACCENT = "#5274B8"        # Royal Blue
+RED = "#D93650"           # Crimson Red
+PINK = "#E879A5"          # Rose Pink
+BLUSH = "#F2A0BB"         # Blush Pink
+
+INK = "#293348"           # Main Text
+MUTED = "#8791A5"         # Secondary Text
+BACKGROUND = "#F7F8FC"    # App Background
+SURFACE = "#FFFFFF"       # Cards
+BORDER = "#E5E8F0"        # Borders
+
+# Channel colors
 CHANNEL_COLORS = {
-    "The Daily Ketchup Podcast": "#526CE1",
-    "Yah Lah BUT": "#F1A64A",
-    "YouGotWatch": "#16A994",
-}
-CLUSTER_COLORS = {"0": "#526CE1", "1": "#F1A64A", "2": "#16A994"}
-EXPECTED = {
-    "cluster_composition.csv": {"cluster", "channel", "episodes", "median_words", "topic_hypothesis"},
-    "channel_profile.csv": {"channel", "episodes", "speaker_turns", "median_words", "median_speakers"},
-    "model_evaluation.csv": {"model", "k", "silhouette", "ari"},
-    "channel_edges.csv": {"channel_a", "channel_b", "edges"},
-    "graph_sensitivity.csv": {"threshold", "edges", "components", "isolates", "largest_component"},
+    "The Daily Ketchup Podcast": "#192B59",
+    "Yah Lah BUT": "#D93650",
+    "YouGotWatch": "#E879A5",
 }
 
-st.set_page_config(page_title="YCSEP | Podcast Intelligence", page_icon="🎙️", layout="wide", initial_sidebar_state="expanded")
+# Cluster colors
+CLUSTER_COLORS = {
+    "0": "#192B59",
+    "1": "#D93650",
+    "2": "#E879A5",
+}
+
+# Expected CSV schemas
+EXPECTED = {
+    "cluster_composition.csv": {
+        "cluster", "channel", "episodes",
+        "median_words", "topic_hypothesis"
+    },
+    "channel_profile.csv": {
+        "channel", "episodes", "speaker_turns",
+        "median_words", "median_speakers"
+    },
+    "model_evaluation.csv": {
+        "model", "k", "silhouette", "ari"
+    },
+    "channel_edges.csv": {
+        "channel_a", "channel_b", "edges"
+    },
+    "graph_sensitivity.csv": {
+        "threshold", "edges", "components",
+        "isolates", "largest_component"
+    },
+}
+
+st.set_page_config(
+    page_title="YCSEP | Podcast Intelligence",
+    page_icon="🎙️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 
 CSS = """
 <style>
