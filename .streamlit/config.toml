@@ -7,3 +7,28 @@ backgroundColor = "#F7F8FC"
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#293348"
 font = "poppins"
+
+
+MIDNIGHT_BLOOM = {
+    "primary": "#192B59",
+    "blue": "#5274B8",
+    "red": "#D93650",
+    "pink": "#E879A5",
+    "blush": "#F2A0BB",
+    "background": "#F7F8FC",
+    "surface": "#FFFFFF",
+    "text": "#293348",
+    "border": "#E5E8F0"
+}
+
+CLUSTER_COLORS = {
+    0: "#192B59",
+    1: "#D93650",
+    2: "#E879A5"
+}
+
+CHANNEL_COLORS = [
+    "#192B59",
+    "#5274B8",
+    "#E879A5"
+]
