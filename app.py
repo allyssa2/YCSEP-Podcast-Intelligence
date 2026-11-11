@@ -21,6 +21,80 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+# ==========================================
+# MIDNIGHT BLOOM - GLOBAL CHART THEME
+# ==========================================
+
+COLORS = {
+    "navy": "#192B59",
+    "blue": "#5274B8",
+    "red": "#D93650",
+    "pink": "#E879A5",
+    "blush": "#F2A0BB",
+    "background": "#F7F8FC",
+    "white": "#FFFFFF",
+    "text": "#293348",
+    "border": "#E5E8F0",
+    "muted": "#AAB3C5"
+}
+
+CLUSTER_COLORS = {
+    0: COLORS["navy"],
+    1: COLORS["red"],
+    2: COLORS["pink"]
+}
+
+CHANNEL_COLORS = [
+    COLORS["navy"],
+    COLORS["blue"],
+    COLORS["pink"]
+]
+
+# Global Plotly template
+import plotly.io as pio
+
+pio.templates["midnight_bloom"] = {
+    "layout": {
+        "paper_bgcolor": COLORS["background"],
+        "plot_bgcolor": COLORS["white"],
+        "font": {
+            "color": COLORS["text"],
+            "family": "Inter, sans-serif"
+        },
+        "title": {
+            "font": {"color": COLORS["navy"]}
+        },
+        "xaxis": {
+            "gridcolor": COLORS["border"],
+            "linecolor": COLORS["border"],
+            "zerolinecolor": COLORS["border"]
+        },
+        "yaxis": {
+            "gridcolor": COLORS["border"],
+            "linecolor": COLORS["border"],
+            "zerolinecolor": COLORS["border"]
+        },
+        "colorway": [
+            COLORS["navy"],
+            COLORS["red"],
+            COLORS["pink"],
+            COLORS["blue"],
+            COLORS["blush"]
+        ],
+        "legend": {
+            "bgcolor": "rgba(255,255,255,0)"
+        },
+        "margin": {
+            "t": 55,
+            "b": 40,
+            "l": 40,
+            "r": 25
+        }
+    }
+}
+
+pio.templates.default = "midnight_bloom"
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 PRIMARY = "#233A67"
